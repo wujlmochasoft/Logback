@@ -1,0 +1,2 @@
+14:56:29.332 [main] DEBUG logback.HelloWorld2 - 这是第二个helloworld的debug测试记录!
+14:56:29.337 [main] INFO  logback.HelloWorld2 - 这是第二个helloworld的info测试记录!

@@ -1,0 +1,3 @@
+14:34:04.830 [main] DEBUG logback.HelloWorld1 - hello world!
+14:34:41.780 [main] DEBUG logback.HelloWorld1 - hello world!
+14:35:43.377 [main] DEBUG logback.HelloWorld1 - hello world!
