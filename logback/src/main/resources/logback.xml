@@ -16,6 +16,16 @@
 
 	<!-- 输出到文件 -->
 	<appender name="FILE" class="ch.qos.logback.core.FileAppender">
+		<!-- 日志级别过滤 -->
+		<!-- <filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level>INFO</level>
+			<onMatch>ACCEPT</onMatch>匹配处理
+			<onMismatch>DENY</onMismatch>不匹配拒绝
+		</filter> -->
+		<!-- 临界值过滤  -->
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>INFO</level>
+		</filter>
 		<!-- Log文件名 -->
 		<file>${logback.logs.path}/${logback.project.name}/demo.log</file>
 		<encoder>
@@ -25,9 +35,11 @@
 	</appender>
 
 	<!-- 每天生成一个文件 -->
-	<appender name="FILE_DAY" class="ch.qos.logback.core.rolling.RollingFileAppender">
+	<appender name="FILE_DAY"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<!-- Log文件名 -->
-		<file>${logback.logs.path}/${logback.project.name}/${logback.project.name}.log</file>
+		<file>${logback.logs.path}/${logback.project.name}/${logback.project.name}.log
+		</file>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
 			<FileNamePattern>
 				${logback.logs.path}/${logback.project.name}/archive/logback-%d.log
@@ -35,16 +47,17 @@
 			<MaxIndex>30</MaxIndex>
 		</rollingPolicy>
 		<encoder>
-			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+			</pattern>
 		</encoder>
 	</appender>
-	
+
 	<!-- loggers -->
-	<logger name="logback.HelloWorld1" level="DEBUG">
+	<logger name="logback.HelloWorld1" level="DEBUG" additivity="false">
 		<appender-ref ref="FILE" />
 	</logger>
 
-	<logger name="logback.HelloWorld2" level="DEBUG" >
+	<logger name="logback.HelloWorld2" level="DEBUG">
 		<appender-ref ref="FILE_DAY" />
 	</logger>
 
